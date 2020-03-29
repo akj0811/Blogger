@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div style="text-align: center">
+		<h2 style="color: #0561EF;font-size: 40;"><strong><u>Login</u></strong></h2><br>
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<label><strong>Username:</strong></label>
+				<center><input maxlength="50" class="form-control w-25" type="text" name="username" placeholder="Enter username"></center>
+			</div>
+			<div class="form-group">
+				<label><strong>Password:</strong></label>
+				<center><input maxlength="50" class="form-control w-25" type="password" name="password" placeholder="Enter password"></center>
+			</div>
+			<button type="submit" class="btn btn-outline-success">Log In</button>
+		</form>
+		<P style="color: #111111;">Don't have an account? Create one <a href="{% url 'signup' %}">here</a></P>
+	</div>
+{% endblock content %}

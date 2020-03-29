@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+		<div style="text-align: center">
+			<h3 style="color: #0561EF;font-size: 30;font-style:"><strong><u>Categories</u></strong></h3><br>
+		</div>
+		<div>
+			{% if categories %}
+				<ul class="list-group">
+					{% for category in categories %}
+						<li style="color: #111111;" class="list-group-item"><a href="{% url 'view_category' category.slug %}"><font style="color: #0E6655;font-size: 20;">{{ category.title }}</font></a></li>
+					{% endfor %}
+				 </ul>
+			{% else %}
+				<p style="color: red;font-size: 20">There are no posts.</p>
+			{% endif %}
+		</div><br>
+		<div style="text-align: center">
+			<h3 style="color: #0561EF;font-size: 30;"><strong><u>Posts</u></strong></h3><br>
+		</div>
+		<div>
+			{% if posts %}
+				<ul class="list-group">
+				{% for post in posts %}
+					<li style="color: #111111" class="list-group-item"><a href ="{% url 'view_post' post.slug %}"><font style="color: #0E6655;font-size: 20">{{ post.title }}</font></a><font style="color: #212F3D;" class="text-muted"> &nbsp &nbsp &nbsp &nbsp Posted by {{ post.author.username }} on {{ post.date_posted|date:"F d, Y" }}</font></li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p style="color: red;font-size: 20">There are no posts.</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock content %}

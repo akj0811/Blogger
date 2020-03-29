@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container ml-8 mr-8">
+		<div>
+			<h1 style="font-size: 40;color: #0561EF"><center><u>{{ post.title }}</u></center></h1><br>
+			<p style="font-size: 20;color: #0E6655;">{{ post.content }}</p><br>
+			<div>
+				<small style="font-size: 20;color: green;">Contibuted by - </small><br>
+				<small style="font-size: 20;color: black;" class="text-muted ml-4"> &nbsp &nbsp {{ post.author.username }} on {{ post.date_posted|date:"F d, Y" }}</small><br>
+			</div>
+		</div>
+	</div>
+	{% if user.is_authenticated and request.user == post.author %}
+		<div style="float: center">
+			<center>
+				<a class="btn btn-outline-success mr-4" href="{% url 'post_update' post.slug %}">Update</a>
+				<a class="btn btn-outline-danger mr-4" href="{% url 'post_delete' post.slug %}">Delete</a>
+			</center>
+		</div>
+	{% endif %}
+{% endblock content %}

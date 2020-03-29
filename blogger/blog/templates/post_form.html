@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<div class="container">
+		<h2 style="color: #0561EF;font-size: 30"><left>Post Blog</left></h2><br>
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<label><strong>Title:</strong></label>
+				<input maxlength="50" class="form-control w-50" type="text" name="title" placeholder="Enter title">
+			</div>
+			<div class="form-group">
+				<label><strong>Category:</strong></label>
+				<select name="category" class="form-control w-50">
+					{% for cat in categories %}
+						<option value="{{ cat }}">{{ cat }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label><strong>Content:</strong></label>
+				<textarea class="form-control w-50" rows="10" name="content" placeholder="Enter content"></textarea>
+			</div>
+			<button type="submit" class="btn btn-outline-success mr-4">Post</button>
+			<a class="btn btn-outline-dark mr-4" href="{% url 'dashboard' %}">Cancel</a>
+		</form>
+	</div>
+{% endblock content %}
+

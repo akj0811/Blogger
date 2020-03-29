@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<div class="container">
+		<h2 style="color: #0561EF;font-size: 30"><left>Create Category</left></h2><br>
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<label><strong>Title:</strong></label>
+				<input maxlength="50" class="form-control w-25" type="text" name="title" placeholder="Enter title">
+			</div>
+			<button type="submit" class="btn btn-outline-success mr-4">Create</button>
+			<a class="btn btn-outline-dark mr-4" href="{% url 'dashboard' %}">Cancel</a>
+		</form>
+	</div>
+{% endblock content %}
+

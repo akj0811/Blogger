@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<div class="container">
+		{% if posts %}
+			<p style="color: #0561EF;font-size: 20;text-align: center"> My Blogs </p>
+			<ul class="list-group">
+			{% for post in posts %}
+				<li style="color: #111111" class="list-group-item"><a href="{% url 'view_post' slug=post.slug %}"><font style="color: #0E6655;font-size: 20">{{ post.title }}</font></a></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<small style="color: #23F909;font-size: 20">You don't have any blog yet.</small>
+		{% endif %}
+	</div><br>
+{% endblock content %}
